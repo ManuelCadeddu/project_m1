@@ -1,0 +1,10 @@
+C:\Users\simon\Desktop\POLITECNICO\1ANNO\2_SEMESTRE\Programmazione di sistema\Malnati\project_m1\project_m1\target\debug\deps\libthread_local-164514f8d92a7b2c.rmeta: C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\lib.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\cached.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\thread_id.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\unreachable.rs
+
+C:\Users\simon\Desktop\POLITECNICO\1ANNO\2_SEMESTRE\Programmazione di sistema\Malnati\project_m1\project_m1\target\debug\deps\libthread_local-164514f8d92a7b2c.rlib: C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\lib.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\cached.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\thread_id.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\unreachable.rs
+
+C:\Users\simon\Desktop\POLITECNICO\1ANNO\2_SEMESTRE\Programmazione di sistema\Malnati\project_m1\project_m1\target\debug\deps\thread_local-164514f8d92a7b2c.d: C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\lib.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\cached.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\thread_id.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\unreachable.rs
+
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\lib.rs:
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\cached.rs:
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\thread_id.rs:
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\thread_local-1.1.7\src\unreachable.rs:

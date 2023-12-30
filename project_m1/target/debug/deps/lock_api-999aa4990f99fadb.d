@@ -1,0 +1,10 @@
+C:\Users\simon\Desktop\POLITECNICO\1ANNO\2_SEMESTRE\Programmazione di sistema\Malnati\project_m1\project_m1\target\debug\deps\liblock_api-999aa4990f99fadb.rmeta: C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\lib.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\mutex.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\remutex.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\rwlock.rs
+
+C:\Users\simon\Desktop\POLITECNICO\1ANNO\2_SEMESTRE\Programmazione di sistema\Malnati\project_m1\project_m1\target\debug\deps\liblock_api-999aa4990f99fadb.rlib: C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\lib.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\mutex.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\remutex.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\rwlock.rs
+
+C:\Users\simon\Desktop\POLITECNICO\1ANNO\2_SEMESTRE\Programmazione di sistema\Malnati\project_m1\project_m1\target\debug\deps\lock_api-999aa4990f99fadb.d: C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\lib.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\mutex.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\remutex.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\rwlock.rs
+
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\lib.rs:
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\mutex.rs:
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\remutex.rs:
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\lock_api-0.4.11\src\rwlock.rs:

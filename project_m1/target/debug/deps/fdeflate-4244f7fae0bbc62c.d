@@ -1,0 +1,10 @@
+C:\Users\simon\Desktop\POLITECNICO\1ANNO\2_SEMESTRE\Programmazione di sistema\Malnati\project_m1\project_m1\target\debug\deps\libfdeflate-4244f7fae0bbc62c.rmeta: C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\lib.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\compress.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\decompress.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\tables.rs
+
+C:\Users\simon\Desktop\POLITECNICO\1ANNO\2_SEMESTRE\Programmazione di sistema\Malnati\project_m1\project_m1\target\debug\deps\libfdeflate-4244f7fae0bbc62c.rlib: C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\lib.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\compress.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\decompress.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\tables.rs
+
+C:\Users\simon\Desktop\POLITECNICO\1ANNO\2_SEMESTRE\Programmazione di sistema\Malnati\project_m1\project_m1\target\debug\deps\fdeflate-4244f7fae0bbc62c.d: C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\lib.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\compress.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\decompress.rs C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\tables.rs
+
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\lib.rs:
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\compress.rs:
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\decompress.rs:
+C:\Users\simon\.cargo\registry\src\index.crates.io-6f17d22bba15001f\fdeflate-0.3.3\src\tables.rs:
