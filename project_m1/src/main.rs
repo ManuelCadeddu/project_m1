@@ -1,6 +1,5 @@
-use std::sync::mpsc::TrySendError::Full;
 use project_m1::WidgetState;
-use druid::{AppLauncher, WindowDesc, WidgetExt, LocalizedString, Rect};
+use druid::{AppLauncher, WindowDesc, LocalizedString};
 const WINDOW_TITLE: LocalizedString<WidgetState> = LocalizedString::new("Screenshot");
 
 fn main() {
