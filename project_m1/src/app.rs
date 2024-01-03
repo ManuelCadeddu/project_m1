@@ -1,7 +1,7 @@
 use druid::kurbo::{Rect};
-use druid::{Color, Data, Lens, Point, RenderContext, Widget, WidgetExt,Selector};
+use druid::{Color, Data, Lens, Point, RenderContext, Widget, WidgetExt};
 use druid::widget::prelude::*;
-use druid::widget::{Controller, Flex, Painter};
+use druid::widget::{Controller, Flex, Painter,Button};
 use screenshots::Screen;
 use std::time::Instant;
 
@@ -24,8 +24,6 @@ impl WidgetState {
                         ctx.stroke(rect, &Color::TRANSPARENT, 1.0);
                     }
                 })
-                    .fix_height(300.0)
-                    .expand_width(),
             )
             .controller(DrawRectController)
     }
@@ -36,27 +34,38 @@ impl<W: Widget<WidgetState>> Controller<WidgetState, W> for DrawRectController {
     fn event(&mut self, child: &mut W, ctx: &mut EventCtx, event: &Event, data: &mut WidgetState, env: &Env) {
         match event {
             Event::MouseDown(mouse) => {
-                data.start_point = Some(mouse.pos);
-                data.end_point = None;
+                //data.start_point = Some(mouse.pos);
+                //data.end_point = None;
+
+                // mod
+                data.start_point = Some(ctx.to_screen(mouse.pos));
+
                 ctx.request_paint();
                 println!("Mouse down: {:?}", mouse.pos);
+                println!("strat_point: {:?}", data.start_point);
             }
             Event::MouseMove(mouse) => {
                 if mouse.buttons.has_left(){
                     data.end_point = Some(mouse.pos);
                     ctx.request_paint();
-                    println!("Mouse move: {:?}", mouse.pos);
                 }
             }
             Event::MouseUp(mouse) => {
                 if mouse.button.is_left() {
-                    data.end_point = Some(mouse.pos);
-                    //ctx.submit_command(druid::commands::CLOSE_WINDOW); non serve qua mi chiude la finestra
+                    data.end_point = Some(ctx.to_screen(mouse.pos));
+
+
+                    // metto come start.x il valore più piccolo tra star.x e end.x (stessa cosa per y)
+                    data.start_point.unwrap().x = if data.start_point.unwrap().x <= data.end_point.unwrap().x { data.start_point.unwrap().x } else { data.end_point.unwrap().x };
+                    data.start_point.unwrap().y = if data.start_point.unwrap().y <= data.end_point.unwrap().y { data.start_point.unwrap().y } else { data.end_point.unwrap().y };
+
                     capture_screenshot_area(data.start_point, data.end_point);
                     data.start_point = None; // Reimposta i punti su None
                     data.end_point = None;
                     ctx.request_paint();
                     println!("Mouse up: {:?}", mouse.pos);
+                    println!("end_point: {:?}", data.end_point);
+                    println!("start_global: {:?}", data.start_point);
                 }
             }
             _ => {}
@@ -70,12 +79,17 @@ fn capture_screenshot_area(start: Option<Point>, end: Option<Point>) {
     let screens = Screen::all().unwrap();
 
     for screen in screens {
-        let mut image = screen.capture().unwrap();
-        if let (Some(start), Some(end)) = (start,end) {
+
+        if let (Some(start), Some(end)) = (start, end) {
             let (start_x, start_y) = (start.x as i32, start.y as i32);
             let (end_x, end_y) = (end.x as u32, end.y as u32);
-            println!("start_x: {}, start_y: {}, end_x: {}, end_y: {}", start_x, start_y, end_x, end_y);
-            image = screen.capture_area(start_x, start_y, end_x, end_y).unwrap();
+
+            let width = end_x - start_x as u32;
+            let height = end_y - start_y as u32;
+
+            println!("start_x: {}, start_y: {}, width: {}, height: {}", start_x, start_y, width, height);
+
+            let mut image = screen.capture_area(start_x, start_y, width, height).unwrap();
             image.save(format!("target/{}-1.png", screen.display_info.id)).unwrap();
         }
     }

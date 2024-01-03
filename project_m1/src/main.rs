@@ -7,8 +7,8 @@ fn main() {
     let main_window = WindowDesc::new(WidgetState::build_root_widget())
         .title(WINDOW_TITLE)
         .transparent(true)
-        .set_window_state(druid::WindowState::Maximized);
-    //.show_titlebar(false);
+        .set_window_state(druid::WindowState::Maximized)
+        .show_titlebar(false);
 
     // create the initial app state
     let initial_state = WidgetState {
