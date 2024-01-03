@@ -14,7 +14,26 @@ pub struct WidgetState {
 
 impl WidgetState {
     pub fn build_root_widget() -> impl Widget<WidgetState> {
+
+        let close_window_button = Button::new("Close Window")
+            .on_click(|ctx, data: &mut WidgetState, _env| {
+                ctx.submit_command(druid::commands::CLOSE_WINDOW);
+            });
+
+        // Da testare
+        let screenshot_button = Button::new("Screenshot")
+            .on_click(|ctx, data: &mut WidgetState, _env| {
+                capture_screenshot();
+            });
+
+        /*
+        Flex::row()
+            .with_child(close_window_button)
+            .with_child(screenshot_button);  // da testare
+*/
         Flex::column()
+            .with_child(close_window_button)
+           // .with_child(screenshot_button)  // da testare
             .with_child(
                 Painter::new(|ctx, data: &WidgetState, _env| {
                     // Disegna il rettangolo
@@ -25,7 +44,7 @@ impl WidgetState {
                     }
                 })
             )
-            .controller(DrawRectController)
+           .controller(DrawRectController)
     }
 }
 
@@ -46,7 +65,8 @@ impl<W: Widget<WidgetState>> Controller<WidgetState, W> for DrawRectController {
             }
             Event::MouseMove(mouse) => {
                 if mouse.buttons.has_left(){
-                    data.end_point = Some(mouse.pos);
+                    //data.end_point = Some(mouse.pos);
+                    data.end_point = Some(ctx.to_screen(mouse.pos));
                     ctx.request_paint();
                 }
             }
@@ -72,6 +92,21 @@ impl<W: Widget<WidgetState>> Controller<WidgetState, W> for DrawRectController {
         }
         child.event(ctx, event, data, env);
     }
+}
+
+
+// Da testare
+fn capture_screenshot() {
+
+    let start_time = Instant::now();
+    let screens = Screen::all().unwrap();
+
+    for screen in screens {
+        let mut image = screen.capture().unwrap();
+        image.save(format!("target/full{}-1.png", screen.display_info.id)).unwrap();
+    }
+
+    println!("Screenshots catturati e salvati in {} secondi", start_time.elapsed().as_secs_f64());
 }
 
 fn capture_screenshot_area(start: Option<Point>, end: Option<Point>) {
