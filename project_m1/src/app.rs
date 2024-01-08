@@ -1,19 +1,21 @@
 use druid::kurbo::{Rect};
 use druid::{Color, Data, Lens, Point, RenderContext, Widget, WidgetExt};
 use druid::widget::prelude::*;
-use druid::widget::{Controller, Flex, Painter,Button};
+use druid::widget::{Controller, Flex, Painter,Button,Container,SizedBox};
 use screenshots::Screen;
 use std::time::Instant;
+use image::{RgbaImage, DynamicImage, Rgba};
 
 #[derive(Clone, Data, Lens)]
 pub struct WidgetState {
+    pub screenshot: Option<RgbaImage>, // da testare
     pub start_point: Option<Point>,
     // Punto di inizio del rettangolo ed è un f64
     pub end_point: Option<Point>,
 }
 
 impl WidgetState {
-    pub fn build_root_widget() -> impl Widget<WidgetState> {
+    pub fn build_root_widget(&self) -> impl Widget<WidgetState> {
 
         let close_window_button = Button::new("Close Window")
             .on_click(|ctx, data: &mut WidgetState, _env| {
@@ -23,18 +25,18 @@ impl WidgetState {
         // Da testare
         let screenshot_button = Button::new("Screenshot")
             .on_click(|ctx, data: &mut WidgetState, _env| {
-                capture_screenshot();
+                capture_screenshot(data);
             });
 
-        /*
+        // Da testare
+        let background = Container::new(SizedBox::empty().width(200.0).height(200.0))
+            .background(self.screenshot.unwrap());
+
         Flex::row()
             .with_child(close_window_button)
-            .with_child(screenshot_button);  // da testare
-*/
-        Flex::column()
-            .with_child(close_window_button)
-           // .with_child(screenshot_button)  // da testare
-            .with_child(
+            .with_child(screenshot_button)  // da testare
+            .with_child(background);    //da testare
+            /*.with_child(
                 Painter::new(|ctx, data: &WidgetState, _env| {
                     // Disegna il rettangolo
                     if let (Some(start), Some(end)) = (data.start_point, data.end_point) {
@@ -44,7 +46,7 @@ impl WidgetState {
                     }
                 })
             )
-           .controller(DrawRectController)
+           .controller(DrawRectController)*/
     }
 }
 
@@ -96,20 +98,26 @@ impl<W: Widget<WidgetState>> Controller<WidgetState, W> for DrawRectController {
 
 
 // Da testare
-fn capture_screenshot() {
+fn capture_screenshot(data: &mut WidgetState) {
 
     let start_time = Instant::now();
     let screens = Screen::all().unwrap();
 
     for screen in screens {
-        let mut image = screen.capture().unwrap();
-        image.save(format!("target/full{}-1.png", screen.display_info.id)).unwrap();
+        let image_buffer = screen.capture().unwrap();
+        image_buffer.save(format!("target/full{}-1.png", screen.display_info.id)).unwrap();
+        // Convert the image buffer to RgbaImage
+        data.screenshot = RgbaImage::from_raw(image_buffer.width(), image_buffer.height(), image_buffer.into_raw()).unwrap();   //da testare
+
     }
+
+    // Convert the image buffer to RgbaImage
+    //data.screenshot = RgbaImage::from_raw(image_buffer.width(), image_buffer.height(), image_buffer.into_raw());   //da testare
 
     println!("Screenshots catturati e salvati in {} secondi", start_time.elapsed().as_secs_f64());
 }
 
-fn capture_screenshot_area(start: Option<Point>, end: Option<Point>) {
+/*fn capture_screenshot_area(start: Option<Point>, end: Option<Point>) {
     let start_time = Instant::now();
     let screens = Screen::all().unwrap();
 
@@ -126,6 +134,43 @@ fn capture_screenshot_area(start: Option<Point>, end: Option<Point>) {
 
             let mut image = screen.capture_area(start_x, start_y, width, height).unwrap();
             image.save(format!("target/{}-1.png", screen.display_info.id)).unwrap();
+        }
+    }
+
+    println!("Screenshots catturati e salvati in {} secondi", start_time.elapsed().as_secs_f64());
+}*/
+
+fn capture_screenshot_area(start: Option<Point>, end: Option<Point>) {
+    let start_time = Instant::now();
+    let screens = Screen::all().unwrap();
+
+    for screen in screens {
+        if let (Some(start), Some(end)) = (start.as_ref(), end.as_ref()) {
+            let image_buffer = screen.capture().unwrap();
+
+            // Ensure start and end values are unwrapped before using them
+            let start_x = start.x as u32;
+            let start_y = start.y as u32;
+            let end_x = end.x as u32;
+            let end_y = end.y as u32;
+
+            // Check for zero width and height
+            if start_x >= end_x || start_y >= end_y {
+                eprintln!("Error: Zero width or height not allowed");
+                continue; // Skip to the next iteration
+            }
+
+            // Convert the image buffer to RgbaImage
+            let mut image = RgbaImage::from_raw(image_buffer.width(), image_buffer.height(), image_buffer.into_raw()).unwrap();
+
+            // Perform cropping
+            let cropped_image = image::imageops::crop(&mut image, start_x, start_y, end_x - start_x, end_y - start_y).to_image();
+
+            // Save cropped image
+            if let Err(err) = cropped_image.save(format!("target/{}-1.png", screen.display_info.id)) {
+                eprintln!("Error saving cropped image: {}", err);
+                // Handle the error as needed
+            }
         }
     }
 
